@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 
@@ -38,10 +40,113 @@ void menu_principal(){
 }
 
 
+void secuencia_jugadas(int var_comienza){
+    string jugadas_par;
+    string jugadas_impar;
+    string jugador_actual;
+    char simbolo_actual;
+    bool cuadrante_logico;
+    char cuadrante_num;
+    bool ganar=false;
+    int i=0, j=0,turno=0;
+
+    //definir matriz
+    char matriz[3][9];
+    for(i=0;i<3;i++){
+        for(j=0;j<=9;j++){
+            matriz[i][j]=']';
+            if((i==0 || i==1 || i==2) && (j==0 || j==3 || j==6) ){
+                matriz[i][j]='[';
+            }
+        }
+    }
+    matriz[0][1]='1';
+    matriz[0][4]='2';
+    matriz[0][7]='3';
+    matriz[1][1]='4';
+    matriz[1][4]='5';
+    matriz[1][7]='6';
+    matriz[2][1]='7';
+    matriz[2][4]='8';
+    matriz[2][7]='9';
+
+    /*
+   //mostrar
+    for(i=0;i<3;i++){
+        for(j=0;j<9;j++){
+            cout<<matriz[i][j];
+        }
+        cout<<endl;
+    }
+  */
+
+  if(var_comienza==0){
+    jugadas_par="player2";
+    jugadas_impar="player1";
+  }
+  if(var_comienza==1){
+    jugadas_par="player1";
+    jugadas_impar="player2";
+  }
+  turno=1;
+  while( turno<=9 && ganar==false){
+    cout<<"turno numero: "<<turno<<endl;
+
+    if(turno % 2 !=0){
+        cout<<jugadas_impar<<" es su turno"<<endl;
+    }
+    if(turno % 2 ==0){
+        cout<<jugadas_par<<" es su turno"<<endl;
+    }
+    turno=turno+1;
+  }
+
+
+}
+
+
+
+
+//modo juego P1 VS P2
+void contra_jugador(){
+    char aux[2] ;
+	int num=0;
+	int var_quien_comienza=0;
+
+	system("cls");
+	mostrar_logo();
+	logo_P1vsP2();
+
+	cout<< "Elija un player cada jugador"<<endl;
+	cout<< "ingrese cualquier tecla para continuar..."<<endl;
+	cin>> aux;
+
+    //azar
+	srand(time(NULL));
+	num = rand()%2;
+
+	if(num==0){
+        cout<<"comienza el Player1"<<endl;
+        var_quien_comienza=0;
+	}
+	if(num==1){
+        cout<<"comienza el Player2"<<endl;
+        var_quien_comienza=1;
+	}
+	cout<<"presione una tecla para continuar";
+	cin >>aux;
+	system("cls");
+	secuencia_jugadas(var_quien_comienza);
+}
+
+
+
+
+
 
 
 int main()
 {
-    menu_principal();
+    contra_jugador();
    return 0;
 }
