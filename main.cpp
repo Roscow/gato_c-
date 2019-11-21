@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+
 using namespace std;
 
 void mostrar_logo(){
@@ -70,16 +71,6 @@ void secuencia_jugadas(int var_comienza){
     matriz[2][4]='8';
     matriz[2][7]='9';
 
-    /*
-   //mostrar
-    for(i=0;i<3;i++){
-        for(j=0;j<9;j++){
-            cout<<matriz[i][j];
-        }
-        cout<<endl;
-    }
-  */
-
   if(var_comienza==0){
     jugadas_par="player2";
     jugadas_impar="player1";
@@ -94,11 +85,24 @@ void secuencia_jugadas(int var_comienza){
 
     if(turno % 2 !=0){
         cout<<jugadas_impar<<" es su turno"<<endl;
+        simbolo_actual='x';
+        jugador_actual=string(jugadas_impar);
     }
     if(turno % 2 ==0){
         cout<<jugadas_par<<" es su turno"<<endl;
+        simbolo_actual='o';
+        jugador_actual=string(jugadas_par);
     }
+    //cout<<jugador_actual<<endl;
     turno=turno+1;
+
+   //mostrar
+    for(i=0;i<3;i++){
+        for(j=0;j<9;j++){
+            cout<<matriz[i][j];
+        }
+        cout<<endl;
+    }
   }
 
 
