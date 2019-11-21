@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1574377225 source:c:\probando_strings\main.cpp
+1574380201 source:c:\probando_strings\main.cpp
 	<iostream>
 	<stdlib.h>
 	<time.h>

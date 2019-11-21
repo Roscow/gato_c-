@@ -103,9 +103,78 @@ void secuencia_jugadas(int var_comienza){
         }
         cout<<endl;
     }
+
+    //ingresasr el cuadrante donde se insertara
+    cuadrante_logico=false;
+    while(cuadrante_logico==false){
+        cout<<"SELECCIONE UN CUADRANTE"<<endl;
+        cin >>cuadrante_num;
+
+        for(i=0;i<3;i++){
+            for(j=0;j<9;j++){
+                if(matriz[i][j]==cuadrante_num){
+                    matriz[i][j]= simbolo_actual;
+                    cout<<"se agrego simbolo"<<endl;
+                    cuadrante_logico=true;
+                }
+            }
+            cout<<endl;
+        }
+    }
+    //revisar si alguien ha ganado
+    //caso 1
+    if(matriz[0][1]==simbolo_actual && matriz[0][4]==simbolo_actual && matriz[0][7]==simbolo_actual){
+        ganar=true;
+    }
+    //caso 2
+    if(matriz[1][1]==simbolo_actual && matriz[1][4]==simbolo_actual && matriz[1][7]==simbolo_actual){
+        ganar=true;
+    }
+    //caso 3
+    if(matriz[2][1]==simbolo_actual && matriz[2][4]==simbolo_actual && matriz[2][7]==simbolo_actual){
+        ganar=true;
+    }
+    //caso 4
+    if(matriz[0][1]==simbolo_actual && matriz[1][1]==simbolo_actual && matriz[2][1]==simbolo_actual){
+        ganar=true;
+    }
+    //caso 5
+    if(matriz[0][4]==simbolo_actual && matriz[1][4]==simbolo_actual && matriz[2][4]==simbolo_actual){
+        ganar=true;
+    }
+     //caso 6
+    if(matriz[0][7]==simbolo_actual && matriz[1][7]==simbolo_actual && matriz[2][7]==simbolo_actual){
+        ganar=true;
+    }
+     //caso 7
+    if(matriz[0][1]==simbolo_actual && matriz[1][4]==simbolo_actual && matriz[2][7]==simbolo_actual){
+        ganar=true;
+    }
+     //caso 8
+    if(matriz[0][7]==simbolo_actual && matriz[1][4]==simbolo_actual && matriz[2][1]==simbolo_actual){
+        ganar=true;
+    }
+    system("cls");
   }
-
-
+  if(ganar==true){
+        cout<<"#############################"<<endl;
+        cout<<"#        Game Over          #"<<endl;
+        cout<<"#      hay un ganador       #"<<endl;
+        cout<<"#############################"<<endl;
+        //mostrar
+    for(i=0;i<3;i++){
+        for(j=0;j<9;j++){
+            cout<<matriz[i][j];
+        }
+        cout<<endl;
+    }
+  }
+  cout <<"FELICIDADES "<<jugador_actual<<endl;
+  if(ganar==false){
+        cout<<"#############################"<<endl;
+        cout<<"#        Game Over          #"<<endl;
+        cout<<"#          EMPATE           #"<<endl;
+  }
 }
 
 
